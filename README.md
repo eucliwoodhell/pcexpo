@@ -1,14 +1,14 @@
-#React & Node - Full ECommerce [2021]
+# React & Node - Full ECommerce [2021]
 
 Welcome to my react and node proyect to build a fully-functional e-commerce website.
 
-##Getting Started
+## Getting Started
 These instructions will get you a copy of the app and running on your local machine/emulator/device for development & learning purposes:
 
 - Node JS
 - React JS
 
-##Run Locally
+## Run Locally
 
 1. Open Terminal
 2. Clone this repository
@@ -21,7 +21,7 @@ $ cd pcexpo
 $ npm install
 ```
 
-##Usage
+## Usage
 
 Run server
 
