@@ -11,7 +11,8 @@ import {
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import Logo from '../logo'
-const drawerWidth = 240
+
+// const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
