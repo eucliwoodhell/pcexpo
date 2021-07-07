@@ -1,6 +1,7 @@
 import React from 'react'
 import Bar from '../navBar/Bar'
 import Dra from './Dra'
+import ItemListContainer from '../itemList/ItemListContainer'
 import { Hidden, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
@@ -10,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
+        padding: theme.spacing(10),
     },
 }))
 
@@ -37,7 +38,9 @@ const Drawer = () => {
                     onClose={callOpen}/>
             </Hidden>
             <div className={classes.content}>
-                <div className={classes.toolbar}></div>
+                <div className={classes.toolbar}>
+                    <ItemListContainer/>
+                </div>
             </div>
         </div>
     )

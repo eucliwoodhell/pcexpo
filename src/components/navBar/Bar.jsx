@@ -8,16 +8,18 @@ import {
   Grid,
   Typography,
   Hidden,
+  MenuItem
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import Logo from '../logo'
+import { CartWidget } from '../cart/CartWidget'
 
 // const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
   toolbarNav: {
-    overflowX: 'auto',
+    marginLeft: 'auto',
   },
   toolbarLink: {
     padding: theme.spacing(1),
@@ -57,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
     height: 60,
     // justifyContent: 'space-between'
   },
+  rightToolbar: {
+    marginLeft: "auto",
+    marginRight: -12
+  },
 }))
 
 const Bar = (props) => {
@@ -76,18 +82,21 @@ const Bar = (props) => {
               PCExpo
             </Typography>
           </div>
+          
           <Toolbar className={classes.toolbarNav}>
-            <Hidden smDown>
-              <Typography className={classes.toolbarLink}>
-                Home
-              </Typography>
-              <Typography className={classes.toolbarLink}>
-                About
-              </Typography>
+
+            {/* Items menu */}
+            <Hidden xsDown>
+              {['Home', 'About'].map((text, index) => (
+                // <MenuItem className={classes.toolbarLink} key={text}>
+                <p className={classes.toolbarLink} onClick={() => {alert('Click Menu')} }> {text} </p>
+                // </MenuItem>
+              ))}
+              <MenuItem>
+                <CartWidget />
+              </MenuItem>
             </Hidden>
-            <div>
-              
-            </div>
+
             <Hidden mdUp>
               <div className={classes.toolbarButtons}>
                 <IconButton
@@ -101,6 +110,7 @@ const Bar = (props) => {
               </div>
             </Hidden>
           </Toolbar>
+
         </Grid>
       </Container>
     </AppBar>

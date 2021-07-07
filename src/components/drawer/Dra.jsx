@@ -10,7 +10,7 @@ import {
     ListItemText
 } from '@material-ui/core'
 
-const drawerWidth = 240
+const drawerWidth = 260
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
@@ -49,7 +49,7 @@ const Dra = (props) => {
             <List>
                 <ListItem className={classes.item}>PCExpo</ListItem>
                 <Divider className={classes.divider} />
-                {['Home', 'About'].map((text, index) => (
+                {['Home', 'About', 'Cart'].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon></ListItemIcon>
                         <ListItemText primary={text} />
