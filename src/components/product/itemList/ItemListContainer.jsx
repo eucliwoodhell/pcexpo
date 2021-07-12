@@ -15,16 +15,28 @@ export const ItemListContainer = () => {
         fetch("https://mocki.io/v1/b294a546-1cff-4aef-aa56-42d718106461")
             .then((response) => response.json())
             .then((res) => {
-                // console.log(res)
                 setItems(res.Products)
             })
             .catch((err) => console.log(`Response with errors: ${err}`))
     }, []);
+    
+    // console.log(items)
+
+    // const getProducts = async () => {
+    //     let call = fetch("https://mocki.io/v1/b294a546-1cff-4aef-aa56-42d718106461")
+    //     let data = await call
+    //     data = data.text()
+    //     data = JSON.parse(data)
+    //     console.log(data);
+    //     // return 
+    // }
+
+    // console.log(items);
 
     const classes = useStyles()
     return (
         <div className={classes.root}>
-            <Grid container spacing={3}>
+            <Grid container justify="center" spacing={3}>
                 {!items ? 'Loading' : items.map((element) => {
                     return <Item key={element.id} items={element} size={4}/>
                 })}

@@ -1,10 +1,10 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
 
-const Btn = () => {
+export const Btn = (props) => {
     return (
-        <Button variant="text" color={this.props.color}>
-            {this.props.text}
+        <Button variant={props.variant} color={props.color}>
+            {props.text}
         </Button>
     )
 }

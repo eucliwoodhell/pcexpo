@@ -1,17 +1,21 @@
 import React from 'react'
 import Bar from '../navBar/Bar'
 import Dra from './Dra'
-import ItemListContainer from '../itemList/ItemListContainer'
-import { Hidden, makeStyles } from '@material-ui/core'
+import ItemListContainer from '../product/itemList/ItemListContainer'
+import { Hidden, makeStyles, Container } from '@material-ui/core'
+import { grey } from '@material-ui/core/colors'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex'
+        display: 'flex',
+        backgroundColor: grey[100]
     },
-    toolbar: theme.mixins.toolbar,
+    // toolbar: theme.mixins.toolbar,
     content: {
         flexGrow: 1,
-        padding: theme.spacing(10),
+        marginTop: '100px',
+        marginBottom: '100px'
+        // padding: theme.spacing(12),
     },
 }))
 
@@ -37,11 +41,13 @@ const Drawer = () => {
                     open={open}
                     onClose={callOpen}/>
             </Hidden>
-            <div className={classes.content}>
+            {/* <div className={classes.content}>
                 <div className={classes.toolbar}>
-                    <ItemListContainer/>
                 </div>
-            </div>
+            </div> */}
+            <Container className={classes.content}>
+                <ItemListContainer/>
+            </Container>
         </div>
     )
 }

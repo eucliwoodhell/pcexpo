@@ -88,9 +88,9 @@ const Bar = (props) => {
             {/* Items menu */}
             <Hidden xsDown>
               {['Home', 'About'].map((text, index) => (
-                // <MenuItem className={classes.toolbarLink} key={text}>
-                <p className={classes.toolbarLink} onClick={() => {alert('Click Menu')} }> {text} </p>
-                // </MenuItem>
+                <MenuItem className={classes.toolbarLink} key={text}>
+                  {text}
+                </MenuItem>
               ))}
               <MenuItem>
                 <CartWidget />
