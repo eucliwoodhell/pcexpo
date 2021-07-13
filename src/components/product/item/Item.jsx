@@ -1,19 +1,7 @@
-import { React, useState } from 'react'
+import React from 'react'
 import Button from '../../button/Btn'
-
-import RemoveIcon from '@material-ui/icons/Remove'
-import AddIcon from '@material-ui/icons/Add'
-import { 
-    Grid, 
-    makeStyles, 
-    Card, 
-    CardMedia, 
-    CardContent, 
-    Typography, 
-    CardActions,
-    InputBase, 
-    IconButton,
-    Paper } from '@material-ui/core';
+import ItemCount from './ItemCount';
+import {  Grid, makeStyles, Card, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -35,27 +23,10 @@ const useStyles = makeStyles((theme) => ({
         marginLeft : "40px",
         marginBottom: '10px'
     },
-    input: {
-        // marginLeft: theme.spacing(1),
-        flex: 1,
-        align:'center',
-        textAlign: 'center',
-        textAlignLast : 'center'
-    },
-    iconButton: {
-        padding: 10,
-    },
-    paper: {
-        padding: '2px 0px',
-        display: 'flex',
-        alignItems: 'center',
-        width: '100%',
-    },
 }));
 
 export const Item = (props) => {
-    const classes = useStyles(1)
-    const[qty, setQty] = useState(0)
+    const classes = useStyles()
     return (
         <Grid align="center" item xs={12} sm={6} md={4} lg={4}>
             <Card className={classes.card}>
@@ -73,19 +44,7 @@ export const Item = (props) => {
                         <Typography align="center">Color: {props.items.detail.Color}</Typography>
                         <Typography align="center">Tamaño: {props.items.detail.Size}</Typography>
                     </div>
-                    <div>
-                        <Paper className={classes.paper}>
-                            <IconButton className={classes.iconButton} onClick={ ()=>{ setQty( qty+1 ) } }>
-                                <AddIcon/>
-                            </IconButton>
-                            <InputBase disabled className={classes.input} value={qty}>
-                            
-                            </InputBase>
-                            <IconButton className={classes.iconButton} onClick={() => { setQty( (qty === 0 ? 0 : qty-1)) }}>
-                                <RemoveIcon />
-                            </IconButton>
-                        </Paper>
-                    </div>
+                    <ItemCount/>
                 </CardContent>
                 <CardActions className={classes.cardActions}>
                     <Button variant="outlined" color="default" text="Agregar al carrito"/>
