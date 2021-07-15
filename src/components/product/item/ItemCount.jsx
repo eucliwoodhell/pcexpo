@@ -22,21 +22,30 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 export const ItemCount = () => {
     const classes = useStyles()
     const [qty, setQty] = useState(0)
+    
+    const buttonClickHandelerMinus = e => {
+        setQty(qty === 0 ? 0 : qty - 1)
+    }
+
+    const buttonClickHandelerPlus = e => {
+        setQty(qty + 1)
+    }
 
     return (
         <div>
             <Paper className={classes.paper}>
-                <IconButton className={classes.iconButton} onClick={() => { setQty(qty + 1) }}>
-                    <AddIcon />
+                <IconButton className={classes.iconButton} onClick={buttonClickHandelerMinus}>
+                    <RemoveIcon />
                 </IconButton>
                 <InputBase disabled className={classes.input} value={qty}>
 
                 </InputBase>
-                <IconButton className={classes.iconButton} onClick={() => { setQty((qty === 0 ? 0 : qty - 1)) }}>
-                    <RemoveIcon />
+                <IconButton className={classes.iconButton} onClick={buttonClickHandelerPlus}>
+                    <AddIcon />
                 </IconButton>
             </Paper>
         </div>

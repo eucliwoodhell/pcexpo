@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const Drawer = () => {
+const Drawer = (props) => {
     const classes = useStyles()
     const [open, setOpen] = React.useState(false)
 
@@ -39,7 +39,8 @@ const Drawer = () => {
                 <Dra 
                     variant="temporary" 
                     open={open}
-                    onClose={callOpen}/>
+                    onClose={callOpen}
+                    title={props.title}/>
             </Hidden>
             {/* <div className={classes.content}>
                 <div className={classes.toolbar}>

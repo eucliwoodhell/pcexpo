@@ -47,7 +47,7 @@ const Dra = (props) => {
             <div className={classes.toolbar}></div>
             <Divider/>
             <List>
-                <ListItem className={classes.item}>PCExpo</ListItem>
+                <ListItem className={classes.item}>{props.title}</ListItem>
                 <Divider className={classes.divider} />
                 {['Home', 'About', 'Cart'].map((text, index) => (
                     <ListItem button key={text}>

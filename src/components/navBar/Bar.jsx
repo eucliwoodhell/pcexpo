@@ -11,7 +11,7 @@ import {
   MenuItem
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
-import Logo from '../logo'
+import Logo from '../logo/Logo'
 import { CartWidget } from '../cart/CartWidget'
 
 // const drawerWidth = 240
