@@ -49,6 +49,7 @@ const Dra = (props) => {
             <List>
                 <ListItem className={classes.item}>{props.title}</ListItem>
                 <Divider className={classes.divider} />
+                {/* Menu Phone */}
                 {['Home', 'About', 'Cart'].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon></ListItemIcon>

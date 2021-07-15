@@ -1,11 +1,9 @@
 import React from 'react'
 
-const Home = () => {
+export const Public = () => {
     return (
         <div>
-          <p>Inicio</p>  
+            <p>Call Items</p>
         </div>
     )
 }
-
-export default Home

@@ -87,14 +87,18 @@ const Bar = (props) => {
 
             {/* Items menu */}
             <Hidden xsDown>
+              {/* Menu Page */}
               {['Home', 'About'].map((text, index) => (
                 <MenuItem className={classes.toolbarLink} key={text}>
                   {text}
                 </MenuItem>
               ))}
+
+              {/* Page Cart */}
               <MenuItem>
                 <CartWidget />
               </MenuItem>
+            
             </Hidden>
 
             <Hidden mdUp>
