@@ -1,0 +1,144 @@
+{
+	"Products": [
+		{
+			"id": 1,
+			"category": "Monitors",
+			"imgUrl": "https://cdn.pixabay.com/photo/2016/03/09/09/17/desktop-1245714_1280.jpg",
+			"name": "Monitor Samsung",
+			"price": 20000,
+			"detail": [
+				{
+					"Brand": "Samsung",
+					"Color": "Black",
+					"Size": "19pulgadas"
+				}
+			]
+		},
+		{
+			"id": 2,
+			"category": "Mouses",
+			"imgUrl": "https://cdn.pixabay.com/photo/2017/05/24/21/33/workplace-2341642_1280.jpg",
+			"name": "Apple Mouse",
+			"price": 40000,
+			"detail": [
+				{
+					"Brand": "Apple",
+					"Color": "White",
+					"Size": "Medium"
+				}
+			]
+		},
+		{
+			"id": 3,
+			"category": "Headsets",
+			"imgUrl": "https://cdn.pixabay.com/photo/2013/07/13/12/17/headphone-159569_1280.png",
+			"name": "Headset Logitech",
+			"price": 15000,
+			"detail": [
+				{
+					"Brand": "Logitech",
+					"Color": "White",
+					"Size": "Unique"
+				}
+			]
+		},
+		{
+			"id": 4,
+			"category": "Chairs",
+			"imgUrl": "https://cdn.pixabay.com/photo/2014/12/15/17/19/architect-569361_1280.jpg",
+			"name": "Chair Emmet",
+			"price": 25000,
+			"detail": [
+				{
+					"Brand": "DeSillas",
+					"Color": "Orange",
+					"Size": "medium"
+				}
+			]
+		},
+		{
+			"id": 5,
+			"category": "Smart Watches",
+			"imgUrl": "https://cdn.pixabay.com/photo/2017/02/12/12/54/polar-a360-2059937_1280.jpg",
+			"name": "Smart Watch Xiaomi",
+			"price": 150000,
+			"detail": [
+				{
+					"Brand": "Xiaomi",
+					"Color": "Black",
+					"Size": "Unique"
+				}
+			]
+		},
+		{
+			"id": 6,
+			"category": "Keyboards",
+			"imgUrl": "https://cdn.pixabay.com/photo/2015/05/26/23/52/technology-785742_1280.jpg",
+			"name": "KeyBoard black Raizer",
+			"price": 7000,
+			"detail": [
+				{
+					"Brand": "Raizer",
+					"Color": "Black",
+					"Size": "Normal"
+				}
+			]
+		},
+		{
+			"id": 7,
+			"category": "Notebooks",
+			"imgUrl": "https://cdn.pixabay.com/photo/2020/03/18/05/51/mac-4942769_1280.png",
+			"name": "MacBook Pro",
+			"price": 380000,
+			"detail": [
+				{
+					"Brand": "Apple",
+					"Color": "Black",
+					"Size": "13pulgadas"
+				}
+			]
+		},
+		{
+			"id": 8,
+			"category": "Desk",
+			"imgUrl": "https://cdn.pixabay.com/photo/2017/08/01/23/51/apple-2568755_1280.jpg",
+			"name": "Industrial desk",
+			"price": 18000,
+			"detail": [
+				{
+					"Brand": "Industrial",
+					"Color": "Brown",
+					"Size": "1.20m"
+				}
+			]
+		},
+		{
+			"id": 9,
+			"category": "Tablets",
+			"imgUrl": "https://cdn.pixabay.com/photo/2015/02/02/15/28/bar-621033_1280.jpg",
+			"name": "Tablet LG",
+			"price": 45000,
+			"detail": [
+				{
+					"Brand": "LG",
+					"Color": "Black",
+					"Size": "9pulgadas"
+				}
+			]
+		},
+		{
+			"id": 10,
+			"category": "Video Card",
+			"imgUrl": "https://s3-sa-east-1.amazonaws.com/saasargentina/0q6tMtEfaFFScGS5Wuhn/imagen",
+			"name": "RTX 3080",
+			"price": 590000,
+			"detail": [
+				{
+					"Brand": "NVIDEA",
+					"Color": "Black",
+					"Size": "1.2"
+				}
+			]
+		}
+	]
+}

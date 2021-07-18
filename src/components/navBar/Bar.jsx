@@ -11,10 +11,11 @@ import {
   MenuItem
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
+import { NavLink } from 'react-router-dom'
+
 import Logo from '../logo/Logo'
 import { CartWidget } from '../cart/CartWidget'
-
-// const drawerWidth = 240
+import { sections } from '../../config/Autoload'
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
@@ -68,19 +69,21 @@ const useStyles = makeStyles((theme) => ({
 const Bar = (props) => {
   const classes = useStyles()
   return (
-    <AppBar position="fixed" className={classes.appBar}>
+    <AppBar position="fixed">
       <Container component="header" maxWidth="xl">
         <Grid container className={classes.grid}>
           <div className={classes.brand}>
-            <Logo className={classes.logo} />
-            <Typography
-              component="h2"
-              variant="h5"
-              noWrap
-              className={classes.title}
-            >
-              PCExpo
-            </Typography>
+            <NavLink to="/" style={{ textDecoration: 'none', color: 'unset' }}>
+              <Logo className={classes.logo} />
+              <Typography
+                component="h2"
+                variant="h5"
+                noWrap
+                className={classes.title}
+              >
+                {props.title}
+              </Typography>
+            </NavLink>
           </div>
           
           <Toolbar className={classes.toolbarNav}>
@@ -88,10 +91,12 @@ const Bar = (props) => {
             {/* Items menu */}
             <Hidden xsDown>
               {/* Menu Page */}
-              {['Home', 'About'].map((text, index) => (
-                <MenuItem className={classes.toolbarLink} key={text}>
-                  {text}
-                </MenuItem>
+              {sections.map((element) => (
+                <NavLink to={element.url} key={element.name} style={{ textDecoration: 'none', color: 'unset' }} >
+                  <MenuItem className={classes.toolbarLink}>
+                    {element.name}
+                  </MenuItem>
+                </NavLink>
               ))}
 
               {/* Page Cart */}

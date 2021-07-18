@@ -1,10 +1,16 @@
-import { Grid, makeStyles  } from '@material-ui/core';
+import { Grid, makeStyles, Container  } from '@material-ui/core';
 import { React, useState, useEffect} from 'react'
 import Item from '../item/Item'
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+    },
+    content: {
+        flexGrow: 1,
+        marginTop: '100px',
+        marginBottom: '100px',
+        // padding: theme.spacing(12),
     },
 }));
 
@@ -20,8 +26,6 @@ export const ItemListContainer = () => {
             .catch((err) => console.log(`Response with errors: ${err}`))
     }, []);
     
-    // console.log(items)
-
     // const getProducts = async () => {
     //     let call = fetch("https://mocki.io/v1/b294a546-1cff-4aef-aa56-42d718106461")
     //     let data = await call
@@ -30,17 +34,18 @@ export const ItemListContainer = () => {
     //     console.log(data);
     //     // return 
     // }
-
     // console.log(items);
 
     const classes = useStyles()
     return (
         <div className={classes.root}>
-            <Grid container justify="center" spacing={3}>
-                {!items ? 'Loading' : items.map((element) => {
-                    return <Item key={element.id} items={element} size={4}/>
-                })}
-            </Grid>
+            <Container className={classes.content}>
+                <Grid container justify="center" spacing={3}>
+                    {!items ? 'Loading' : items.map((element) => {
+                        return <Item key={element.id} items={element} size={4}/>
+                    })}
+                </Grid>
+            </Container>
         </div>
     )
 }

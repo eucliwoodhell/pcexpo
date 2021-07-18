@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
 import {
     makeStyles,
     Drawer,
@@ -9,6 +9,7 @@ import {
     ListItemIcon,
     ListItemText
 } from '@material-ui/core'
+import { sections } from '../../config/Autoload'
 
 const drawerWidth = 260
 
@@ -47,15 +48,20 @@ const Dra = (props) => {
             <div className={classes.toolbar}></div>
             <Divider/>
             <List>
-                <ListItem className={classes.item}>{props.title}</ListItem>
+                <NavLink to="/" style={{ textDecoration: 'none', color: 'unset' }}>
+                    <ListItem className={classes.item}>{props.title}</ListItem>
+                </NavLink>
                 <Divider className={classes.divider} />
                 {/* Menu Phone */}
-                {['Home', 'About', 'Cart'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon></ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
+                {sections.map((element) => (
+                    <NavLink to={element.url} key={element.name} style={{ textDecoration: 'none', color: 'unset' }} >
+                        <ListItem button>
+                            <ListItemIcon></ListItemIcon>
+                            <ListItemText primary={element.name} />
+                        </ListItem>
+                    </NavLink>
                 ))}
+
             </List>
 
         </Drawer>
