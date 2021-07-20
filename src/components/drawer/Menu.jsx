@@ -11,11 +11,7 @@ const Drawer = (props) => {
     return (
         <>
             <Bar callOpen={callOpen} title={props.title} />
-            {/* <Hidden xsDown>
-                <Dra 
-                    variant="permanent" 
-                    open={true}/>
-            </Hidden> */}
+
             <Hidden smUp>
                 <Dra 
                     variant="temporary" 

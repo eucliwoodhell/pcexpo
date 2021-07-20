@@ -5,12 +5,15 @@ import Item from '../item/Item'
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        // marginTop: 'px',
+        // backgroundColor: grey[100],
+        // backgroundColor: 'black'
     },
     content: {
-        flexGrow: 1,
+    //     flexGrow: 1,
         marginTop: '100px',
         marginBottom: '100px',
-        // padding: theme.spacing(12),
+    //     // padding: theme.spacing(12),
     },
 }));
 

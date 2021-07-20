@@ -60,16 +60,19 @@ const useStyles = makeStyles((theme) => ({
     height: 60,
     // justifyContent: 'space-between'
   },
+  marginLeft: "auto",
   rightToolbar: {
-    marginLeft: "auto",
     marginRight: -12
   },
+  AppBar: {
+    paddingBottom: '10px'
+  }
 }))
 
 const Bar = (props) => {
   const classes = useStyles()
   return (
-    <AppBar position="fixed">
+    <AppBar position="absolute" className={classes.AppBar}>
       <Container component="header" maxWidth="xl">
         <Grid container className={classes.grid}>
           <div className={classes.brand}>

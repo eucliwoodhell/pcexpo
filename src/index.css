@@ -11,8 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+/* 
 * { 
   outline: 1px solid red;
   outline-offset: -1px;
+} */
+body {
+  background-color: #fafafa;
 }

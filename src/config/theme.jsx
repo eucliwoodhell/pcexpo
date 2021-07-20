@@ -4,9 +4,9 @@ import { grey } from '@material-ui/core/colors'
 const theme = createMuiTheme ({
     palette: {
         primary: {
-            main: grey[50]
-        }
-    }
+            main: grey[900]
+        },
+    },
 })
 
 export default theme

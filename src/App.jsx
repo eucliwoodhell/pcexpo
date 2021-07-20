@@ -13,7 +13,7 @@ function App() {
     <ThemeProvider theme={theme}>
       {/* main */}
       <BrowserRouter>
-          <Menu title={title}/>
+        <Menu title={title}/>
         <Routers/>
       </BrowserRouter>
 

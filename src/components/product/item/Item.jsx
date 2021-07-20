@@ -33,24 +33,25 @@ export const Item = (props) => {
     const classes = useStyles()
     return (
         <Grid align="center" item xs={12} sm={6} md={4} lg={4}>
-            <Link to={`/product/detail/${props.items.id}`} className={classes.link} >
-                <Card className={classes.card}>
+            <Card className={classes.card}>
+                <Link to={`/product/detail/${props.items.id}`} className={classes.link} >
+
                     <CardMedia
                         className={classes.media}
                         image={props.items.imgUrl}
                         title={props.items.name}
                     />
-                    <CardContent>
-                        <Typography variant="h5" align="center" component="h2">
-                            {props.items.name}
-                        </Typography>
-                        <ItemCount/>
-                    </CardContent>
-                    <CardActions className={classes.cardActions}>
-                        <Button variant="outlined" color="default" text="Agregar al carrito"/>
-                    </CardActions>
-                </Card>
-            </Link>
+                </Link>
+                <CardContent>
+                    <Typography variant="h5" align="center" component="h2">
+                        {props.items.name}
+                    </Typography>
+                    <ItemCount/>
+                </CardContent>
+                <CardActions className={classes.cardActions}>
+                    <Button variant="outlined" color="default" text="Agregar al carrito"/>
+                </CardActions>
+            </Card>
         </Grid>
     )
 }

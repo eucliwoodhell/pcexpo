@@ -1,13 +1,20 @@
 import React from 'react'
 import { Container, Typography} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-
+import { grey } from '@material-ui/core/colors'
 
 const useStyles = makeStyles((theme) => ({
     footer : {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(6,0),
-        textAlign: "center"
+        color: grey[50],
+        backgroundColor: grey[900],
+        borderTop: "1px solid #E7E7E7",
+        textAlign: "center",
+        padding: "20px",
+        position: "fixed",
+        left: "0",
+        bottom: "0",
+        height: "45px",
+        width: "100%",
     }
 }))
 
@@ -24,7 +31,6 @@ export const Footer = (props) => {
               <Typography
                 variant="subtitle1"
                 alings="center"
-                color="textSecondary"
                 component="p"
                 >
                   {description}
