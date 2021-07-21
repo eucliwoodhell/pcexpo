@@ -1,4 +1,4 @@
-import { Grid, makeStyles, Container  } from '@material-ui/core';
+import { Grid, makeStyles, Container, Paper  } from '@material-ui/core';
 import { React, useState, useEffect} from 'react'
 import Item from '../item/Item'
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     content: {
     //     flexGrow: 1,
         marginTop: '100px',
-        marginBottom: '100px',
+        marginBottom: '130px',
     //     // padding: theme.spacing(12),
     },
 }));
@@ -43,11 +43,13 @@ export const ItemListContainer = () => {
     return (
         <div className={classes.root}>
             <Container className={classes.content}>
-                <Grid container justify="center" spacing={3}>
-                    {!items ? 'Loading' : items.map((element) => {
-                        return <Item key={element.id} items={element} size={4}/>
-                    })}
-                </Grid>
+                <Paper>
+                    <Grid container justify="center" spacing={3}>
+                        {!items ? 'Loading' : items.map((element) => {
+                            return <Item key={element.id} items={element} size={4}/>
+                        })}
+                    </Grid>
+                </Paper>
             </Container>
         </div>
     )

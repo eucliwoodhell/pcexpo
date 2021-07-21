@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react'
-import { makeStyles, Container, Grid, Card, CardContent, Typography, Paper  } from '@material-ui/core';
+import { makeStyles, Container, Grid, Typography, Paper  } from '@material-ui/core';
 import { useParams } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -13,8 +13,15 @@ const useStyles = makeStyles((theme) => ({
         // padding: theme.spacing(12),
     },
     img: {
-        width: '100%',
-        height: '100%',
+        margin: 'auto',
+        display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
+    },
+    paper: {
+        padding: theme.spacing(2),
+        margin: 'auto',
+        maxWidth: 500,
     },
 }));
 
@@ -46,48 +53,47 @@ export const ItemDetailContainer = () => {
                 {!item ? (
                         'Loading'
                 ) : (
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} sm={6}>
-                                <Paper elevation={0}>
+                       <Paper className={classes.paper}>
+                            <Grid container spacing={3}>
+                                <Grid item>
                                     <img
                                         className={classes.img}
                                         src={item.imgUrl}
                                         alt={item.name}
                                     />
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <Card>
-                                    <div>
-                                        <CardContent>
-                                            <Typography component="h2" variant="h5" paragraph>
+                                </Grid>
+                                <Grid item xs={12} sm container>
+                                    <Grid item xs container direction="column" spacing={2}>
+                                        <Grid item xs>
+                                            <Typography gutterBottom variant="subtitle1">
                                                 {item.name}
                                             </Typography>
-
-                                            <Typography variant="subtitle1">
-                                                Precio: $ {item.price}
+                                            <Typography variant="body2" gutterBottom>
+                                                orem ipsum dolor sit amet consectetur adipisicing elit. Commodi perferendis amet cumque ipsum obcaecati veniam dolorem. Temporibus vel hic doloremque cum aut placeat perferendis repellendus voluptatem reiciendis, delectus maxime dicta.
                                             </Typography>
-                                            <Typography variant="subtitle1">
+                                            <br />
+                                            <Typography variant="body2" color="textSecondary">
                                                 Categoria: $ {item.category}
-                                            </Typography>
-                                            <br/>
-                                            <Typography variant="subtitle1">
+                                                <br />
                                                 Marca: {item.detail[0].Brand}
-                                            </Typography>
-                                            <Typography variant="subtitle1">
+                                                <br />
                                                 Color: {item.detail[0].Color}
-                                            </Typography>
-                                            <Typography variant="subtitle1">
+                                                <br />
                                                 Tamaño: {item.detail[0].Size}
                                             </Typography>
-                                            <Typography variant="subtitle1">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi perferendis amet cumque ipsum obcaecati veniam dolorem. Temporibus vel hic doloremque cum aut placeat perferendis repellendus voluptatem reiciendis, delectus maxime dicta.
-                                            </Typography>
-                                        </CardContent>
-                                    </div>
-                                </Card>
+                                        </Grid>
+                                        <Grid item>
+                                           {/* Button */}
+                                        </Grid>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography variant="subtitle1">
+                                            $ {item.price}
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
                             </Grid>
-                        </Grid>
+                       </Paper>
                 )}
             </Container>
         </div>

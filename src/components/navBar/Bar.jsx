@@ -11,6 +11,7 @@ import {
   MenuItem
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import { NavLink } from 'react-router-dom'
 
 import Logo from '../logo/Logo'
@@ -26,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     flexShrink: 0,
     textDecoration: 'none',
-    color: '#53575A',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -101,6 +101,11 @@ const Bar = (props) => {
                   </MenuItem>
                 </NavLink>
               ))}
+
+
+              <MenuItem>
+                <AccountCircleIcon/>
+              </MenuItem>
 
               {/* Page Cart */}
               <MenuItem>

@@ -61,6 +61,15 @@ const Dra = (props) => {
                         </ListItem>
                     </NavLink>
                 ))}
+                <ListItem button>
+                    <ListItemIcon></ListItemIcon>
+                    <ListItemText primary="Cart" />
+                </ListItem>
+                <Divider className={classes.divider} />
+                <ListItem button>
+                    <ListItemIcon></ListItemIcon>
+                    <ListItemText primary="Login" />
+                </ListItem>
 
             </List>
 

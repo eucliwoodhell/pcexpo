@@ -1,8 +1,7 @@
 import React from 'react'
 import ItemListContainer from '../../components/product/itemList/ItemListContainer'
-import Carousel from '../../components/carousel/Carousel'
+import CarouselContainer from '../../components/carousel/CarouselContainer'
 import { makeStyles } from '@material-ui/core';
-import { grey } from '@material-ui/core/colors'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +14,7 @@ const Home = () => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      <Carousel/>
+      <CarouselContainer/>
       <ItemListContainer/>
     </div>
   )

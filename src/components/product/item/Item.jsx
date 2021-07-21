@@ -49,7 +49,7 @@ export const Item = (props) => {
                     <ItemCount/>
                 </CardContent>
                 <CardActions className={classes.cardActions}>
-                    <Button variant="outlined" color="default" text="Agregar al carrito"/>
+                    <Button variant="outlined" color="secondary" text="Agregar al carrito"/>
                 </CardActions>
             </Card>
         </Grid>
