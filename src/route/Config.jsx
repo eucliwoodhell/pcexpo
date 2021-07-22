@@ -19,16 +19,18 @@ const invited = {
             path: '/product',
             exact: true,
             component: ItemListContainer,
+            childRoutes: [
+                {
+                    path: '/category/:id',
+                    exact: true,
+                    component: ItemListContainer,
+                }
+            ]
         },
         {
             path: '/product/detail/:id',
             exact: true,
             component: ItemDetailContainer,
-        },
-        {
-            path: '/category/:id',
-            exact: true,
-            component: ItemListContainer,
         },
         {
             path: '/about',

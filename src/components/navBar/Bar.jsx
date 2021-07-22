@@ -90,7 +90,7 @@ const Bar = (props) => {
     if (element.items) {
       const children = []
       for (const key in element.items) {
-        children.push(<NavLink key={element.items[key]} to={`${element.url}${element.items[key]}`} className={classes.links}>
+        children.push(<NavLink key={element.items[key]} to={`/product${element.url}${element.items[key]}`} className={classes.links}>
             <MenuItem onClick={handleClose}>{element.items[key]}</MenuItem>
           </NavLink>)
       }
