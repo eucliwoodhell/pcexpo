@@ -1,7 +1,7 @@
 import React from 'react'
 import ItemListContainer from '../../components/product/itemList/ItemListContainer'
 import CarouselContainer from '../../components/carousel/CarouselContainer'
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Grid, CardContent, Typography, Button, CardMedia, Card } from '@material-ui/core';
+import { makeStyles, Grid, CardContent, Typography, Button, CardMedia, Card } from '@material-ui/core'
 import Carousel from "react-material-ui-carousel"
 import '../carousel/Style.scss'
 

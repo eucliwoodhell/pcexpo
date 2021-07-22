@@ -1,43 +1,53 @@
-import { Grid, makeStyles, Container, Paper  } from '@material-ui/core';
-import { React, useState, useEffect} from 'react'
+import { Grid, makeStyles, Container, Paper } from '@material-ui/core'
+import { React, useState, useEffect, useRef } from 'react'
+import { useParams } from 'react-router-dom'
 import Item from '../item/Item'
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        // marginTop: 'px',
-        // backgroundColor: grey[100],
-        // backgroundColor: 'black'
     },
     content: {
-    //     flexGrow: 1,
         marginTop: '100px',
         marginBottom: '130px',
-    //     // padding: theme.spacing(12),
     },
 }));
 
+
+const getProducts = (products, category) => {
+    if (category) {
+        products = products.reduce( (acc, obj) => {
+            if (obj.category === category) {
+                acc.push(obj)
+            }
+            return acc
+        }, [])
+    }
+    return products
+}
+
+
 export const ItemListContainer = () => {
+    const { id } = useParams()
     const [items, setItems] = useState()
+    const isMountedRef = useRef(null);
 
     useEffect(() => {
         fetch("https://mocki.io/v1/b294a546-1cff-4aef-aa56-42d718106461")
             .then((response) => response.json())
             .then((res) => {
-                setItems(res.Products)
+                console.log(isMountedRef.current);
+                if (isMountedRef.current) {
+                    setItems(getProducts(res.Products, id))
+                }
             })
             .catch((err) => console.log(`Response with errors: ${err}`))
-    }, []);
-    
-    // const getProducts = async () => {
-    //     let call = fetch("https://mocki.io/v1/b294a546-1cff-4aef-aa56-42d718106461")
-    //     let data = await call
-    //     data = data.text()
-    //     data = JSON.parse(data)
-    //     console.log(data);
-    //     // return 
-    // }
-    // console.log(items);
+        return () => isMountedRef.current = false
+    }, [id]);
+
+    useEffect(() => {
+        isMountedRef.current = true
+    })
 
     const classes = useStyles()
     return (
@@ -46,7 +56,7 @@ export const ItemListContainer = () => {
                 <Paper>
                     <Grid container justify="center" spacing={3}>
                         {!items ? 'Loading' : items.map((element) => {
-                            return <Item key={element.id} items={element} size={4}/>
+                            return <Item key={element.id} items={element} size={4} />
                         })}
                     </Grid>
                 </Paper>

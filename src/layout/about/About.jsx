@@ -1,15 +1,11 @@
 import React from 'react'
 import { makeStyles, Container } from '@material-ui/core'
-// import { grey } from '@material-ui/core/colors'
 
 const useStyles = makeStyles((theme) => ({
     content: {
         flexGrow: 1,
         marginTop: '100px',
         marginBottom: '100px',
-        // backgroundColor: grey[200],
-        // background: grey[200],
-        // padding: theme.spacing(12),
     },
 }))
 

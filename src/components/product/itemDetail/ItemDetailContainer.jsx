@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react'
-import { makeStyles, Container, Grid, Typography, Paper  } from '@material-ui/core';
+import { makeStyles, Container, Grid, Typography, Paper  } from '@material-ui/core'
 import { useParams } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         marginTop: '100px',
         marginBottom: '100px',
-        // padding: theme.spacing(12),
     },
     img: {
         margin: 'auto',
@@ -73,7 +72,7 @@ export const ItemDetailContainer = () => {
                                             </Typography>
                                             <br />
                                             <Typography variant="body2" color="textSecondary">
-                                                Categoria: $ {item.category}
+                                                Categoria: {item.category}
                                                 <br />
                                                 Marca: {item.detail[0].Brand}
                                                 <br />

@@ -26,6 +26,11 @@ const invited = {
             component: ItemDetailContainer,
         },
         {
+            path: '/category/:id',
+            exact: true,
+            component: ItemListContainer,
+        },
+        {
             path: '/about',
             exact: true,
             component: About,

@@ -8,7 +8,7 @@ import {
   Grid,
   Typography,
   Hidden,
-  MenuItem
+  MenuItem, Menu
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
@@ -66,17 +66,69 @@ const useStyles = makeStyles((theme) => ({
   },
   AppBar: {
     paddingBottom: '10px'
+  },
+  links:{
+    textDecoration: 'none', 
+    color: 'unset'
   }
 }))
 
+
 const Bar = (props) => {
   const classes = useStyles()
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const createOption = (element) => {
+    if (element.items) {
+      const children = []
+      for (const key in element.items) {
+        children.push(<NavLink key={element.items[key]} to={`${element.url}${element.items[key]}`} className={classes.links}>
+            <MenuItem onClick={handleClose}>{element.items[key]}</MenuItem>
+          </NavLink>)
+      }
+      return <div key={element.name}>
+        <MenuItem className={classes.toolbarLink} onClick={handleClick}> {element.name} </MenuItem>
+          <Menu
+            anchorEl={anchorEl}
+            keepMounted
+            open={!!anchorEl}
+            onClose={handleClose}
+            getContentAnchorEl={null}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "center",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+          {children}
+          </Menu>
+        </div>
+    } else {
+      return <NavLink to={element.url} key={element.name} className={classes.links} >
+        <MenuItem className={classes.toolbarLink}>
+          {element.name}
+        </MenuItem>
+      </NavLink>
+    }
+  }
+
   return (
     <AppBar position="absolute" className={classes.AppBar}>
       <Container component="header" maxWidth="xl">
         <Grid container className={classes.grid}>
           <div className={classes.brand}>
-            <NavLink to="/" style={{ textDecoration: 'none', color: 'unset' }}>
+            <NavLink to="/" className={classes.links}>
               <Logo className={classes.logo} />
               <Typography
                 component="h2"
@@ -94,14 +146,9 @@ const Bar = (props) => {
             {/* Items menu */}
             <Hidden xsDown>
               {/* Menu Page */}
-              {sections.map((element) => (
-                <NavLink to={element.url} key={element.name} style={{ textDecoration: 'none', color: 'unset' }} >
-                  <MenuItem className={classes.toolbarLink}>
-                    {element.name}
-                  </MenuItem>
-                </NavLink>
+              {sections.map((items) => (
+                createOption(items) 
               ))}
-
 
               <MenuItem>
                 <AccountCircleIcon/>

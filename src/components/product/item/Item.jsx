@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../../button/Btn'
 import ItemCount from './ItemCount';
-import {  Grid, makeStyles, Card, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core';
+import {  Grid, makeStyles, Card, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
