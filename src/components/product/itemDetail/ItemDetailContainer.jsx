@@ -83,9 +83,6 @@ export const ItemDetailContainer = () => {
                                                 Tamaño: {item.detail[0].Size}
                                             </Typography>
                                         </Grid>
-                                        <Grid item>
-                                           {/* Button */}
-                                        </Grid>
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="subtitle1">
