@@ -1,8 +1,8 @@
 import React from 'react'
-import Button from '../../button/Btn'
 import ItemCount from './ItemCount';
 import {  Grid, makeStyles, Card, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core'
 import { Link } from 'react-router-dom'
+import ItemCart from './ItemCart';
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     },
     cardActions: {
         textAlign: "center",
-        marginLeft : "40px",
         marginBottom: '10px'
     },
     link: {
@@ -49,7 +48,7 @@ export const Item = (props) => {
                     <ItemCount/>
                 </CardContent>
                 <CardActions className={classes.cardActions}>
-                    <Button variant="outlined" color="secondary" text="Agregar al carrito"/>
+                    <ItemCart />
                 </CardActions>
             </Card>
         </Grid>
