@@ -1,4 +1,6 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+
 import {
   AppBar,
   Toolbar,
@@ -12,10 +14,8 @@ import {
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import { NavLink } from 'react-router-dom'
-
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import Logo from '../logo/Logo'
-import { CartWidget } from '../cart/CartWidget'
 import { sections } from '../../config/Autoload'
 
 const useStyles = makeStyles((theme) => ({
@@ -154,11 +154,12 @@ const Bar = (props) => {
                 <AccountCircleIcon/>
               </MenuItem>
 
-              {/* Page Cart */}
-              <MenuItem>
-                <CartWidget />
-              </MenuItem>
-            
+              <NavLink to="/cart" key="/cart" className={classes.links} >
+                <MenuItem className={classes.toolbarLink}>
+                  <ShoppingCartIcon style={{ fontSize: 33 }} />
+                </MenuItem>
+              </NavLink>
+
             </Hidden>
 
             <Hidden mdUp>

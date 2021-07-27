@@ -1,7 +1,8 @@
 import RemoveIcon from '@material-ui/icons/Remove'
 import AddIcon from '@material-ui/icons/Add'
-import { IconButton, Paper, InputBase, makeStyles, Box, Button, ButtonGroup } from '@material-ui/core'
+import { IconButton, Paper, InputBase, makeStyles, Box, Button, Grid } from '@material-ui/core'
 import { React, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
     iconButton: {
@@ -20,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         textAlignLast: 'center'
     },
+    links: {
+        textDecoration: 'none',
+        color: 'unset'
+    }
 }));
 
 
@@ -47,10 +52,16 @@ export const ItemCount = ( { onAdd } ) => {
                 </IconButton>
             </Paper>
             <Box paddingTop={2}>
-                <ButtonGroup disableElevation variant="contained" color="primary" fullWidth>
-                    <Button onClick={ () => onAdd(qty) } >Agregar Carrito</Button>
-                    <Button>Ir Carritos</Button>
-                </ButtonGroup>
+                <Grid container  spacing={3}>
+                    <Grid item xs={6}>
+                        <Button disableElevation fullWidth variant="contained" color="primary" onClick={() => onAdd(qty)} >Agregar Carrito</Button>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <NavLink  color="primary" to="/cart" key="/cart" className={classes.links} >
+                            <Button disableElevation fullWidth variant="contained" color="primary">Ir Carritos</Button>
+                        </NavLink>
+                    </Grid>
+                </Grid>
             </Box>
         </div>
     )
