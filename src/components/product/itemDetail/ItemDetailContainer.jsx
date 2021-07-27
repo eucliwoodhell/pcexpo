@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from 'react'
 import { makeStyles, Container, Grid, Typography, Paper } from '@material-ui/core'
 import { useParams } from 'react-router-dom'
-import ItemCount from '../item/ItemCount';
 import ItemCart from '../item/ItemCart';
 
 const useStyles = makeStyles((theme) => ({
@@ -91,8 +90,7 @@ export const ItemDetailContainer = () => {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <ItemCount />
-                            <ItemCart />
+                            <ItemCart product={item} />
                        </Paper>
                 )}
             </Container>

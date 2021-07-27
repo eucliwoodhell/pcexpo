@@ -1,14 +1,14 @@
-import React from 'react'
-import { Box, Button, ButtonGroup } from '@material-ui/core'
+import { React, useContext } from 'react'
+import ItemCount from './ItemCount'
+import { useCartContext } from '../../../context/CartContext'
 
-export const ItemCart = () => {
+export const ItemCart = ({ product }) => {
+    const { addCart } = useCartContext()
+    const onAdd = qty  => addCart( {product} , qty)
     return (
-        <Box paddingTop={2}>
-            <ButtonGroup disableElevation variant="contained" color="primary" fullWidth>
-                <Button>Agregar Carrito</Button>
-                <Button>Ir Carritos</Button>
-            </ButtonGroup>
-        </Box>
+        <div>
+            <ItemCount onAdd={onAdd}/>
+        </div>
     )
 }
 

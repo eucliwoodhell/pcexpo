@@ -1,8 +1,7 @@
 import React from 'react'
-import ItemCount from './ItemCount';
-import {  Grid, makeStyles, Card, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core'
-import { Link } from 'react-router-dom'
 import ItemCart from './ItemCart';
+import {  Grid, makeStyles, Card, CardMedia, CardContent, Typography } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -45,11 +44,8 @@ export const Item = (props) => {
                     <Typography variant="h5" align="center" component="h2">
                         {props.items.name}
                     </Typography>
-                    <ItemCount/>
+                    <ItemCart product={props.items}/>
                 </CardContent>
-                <CardActions className={classes.cardActions}>
-                    <ItemCart />
-                </CardActions>
             </Card>
         </Grid>
     )
