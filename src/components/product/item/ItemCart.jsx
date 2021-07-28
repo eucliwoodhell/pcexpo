@@ -7,7 +7,7 @@ export const ItemCart = ({ product }) => {
     const onAdd = qty  => addCart({product}, qty)
     return (
         <div>
-            <ItemCount onAdd={onAdd}/>
+            <ItemCount onAdd={onAdd} name={product.name}/>
         </div>
     )
 }

@@ -1,8 +1,10 @@
-import RemoveIcon from '@material-ui/icons/Remove'
-import AddIcon from '@material-ui/icons/Add'
-import { IconButton, Paper, InputBase, makeStyles, Box, Button, Grid } from '@material-ui/core'
 import { React, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { IconButton, Paper, InputBase, makeStyles, Box, Button, Grid, Snackbar } from '@material-ui/core'
+import RemoveIcon from '@material-ui/icons/Remove'
+import AddIcon from '@material-ui/icons/Add'
+import Alert from '../../alert/Alert'
+
 
 const useStyles = makeStyles((theme) => ({
     iconButton: {
@@ -27,11 +29,23 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-
-export const ItemCount = ( { onAdd } ) => {
+export const ItemCount = ({ onAdd, name }) => {
     const classes = useStyles()
     const [qty, setQty] = useState(0)
+    const [open, setOpen] = useState(false)
     
+    const handleClick = () => {
+        setOpen(qty > 0 ? true : false)
+    }
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway'){
+            return;
+        }
+
+        setOpen(false)
+    }
+
     const buttonClickHandelerMinus = e => {
         setQty(qty === 0 ? 0 : qty - 1)
     }
@@ -54,7 +68,12 @@ export const ItemCount = ( { onAdd } ) => {
             <Box paddingTop={2}>
                 <Grid container  spacing={3}>
                     <Grid item xs={6}>
-                        <Button disableElevation fullWidth variant="contained" color="primary" onClick={() => onAdd(qty)} >Agregar Carrito</Button>
+                        <Button disableElevation fullWidth variant="contained" color="primary" onClick={() => {onAdd(qty); handleClick()} } >Agregar Carrito</Button>
+                        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                            <Alert onClose={handleClose} severity="success">
+                                Se ha agrego correctamente el producto {name} al carrito
+                            </Alert>
+                        </Snackbar>
                     </Grid>
                     <Grid item xs={6}>
                         <NavLink  color="primary" to="/cart" key="/cart" className={classes.links} >
