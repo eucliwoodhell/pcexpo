@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
 import {
   AppBar,
   Toolbar,
@@ -10,13 +9,16 @@ import {
   Grid,
   Typography,
   Hidden,
-  MenuItem, Menu
+  MenuItem, 
+  Menu, 
+  Badge
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import Logo from '../logo/Logo'
 import { sections } from '../../config/Autoload'
+import { useCartContext } from '../../context/CartContext'
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
@@ -77,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
 const Bar = (props) => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { cartCount } = useCartContext()
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -156,7 +159,9 @@ const Bar = (props) => {
 
               <NavLink to="/cart" key="/cart" className={classes.links} >
                 <MenuItem className={classes.toolbarLink}>
-                  <ShoppingCartIcon style={{ fontSize: 33 }} />
+                  <Badge badgeContent={cartCount} color="secondary">
+                    <ShoppingCartIcon style={{ fontSize: 33 }} />
+                  </Badge>
                 </MenuItem>
               </NavLink>
 
