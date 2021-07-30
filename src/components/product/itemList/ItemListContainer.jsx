@@ -1,6 +1,8 @@
 import { Grid, makeStyles, Container, Paper } from '@material-ui/core'
 import { React, useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom'
+import { getFirebaseAppStore } from '../../../services/firebase'
+
 import Item from '../item/Item'
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +49,19 @@ export const ItemListContainer = () => {
 
     useEffect(() => {
         isMountedRef.current = true
+    })
+
+    useEffect(() =>{
+        const firebase = getFirebaseAppStore()
+        const collection = firebase.collection('producto')
+        // .where("id", "==", 100)
+        .get()
+        .then((res) =>{
+            console.log(res.docs)
+            res.forEach(docs => {
+                console.log(docs.data())
+            })
+        })
     })
 
     const classes = useStyles()
