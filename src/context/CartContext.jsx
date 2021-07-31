@@ -31,8 +31,10 @@ const CartProvider = ({ children }) => {
 
     const delCart = (index) => {
         let _cart = cart
-        _cart.slice(index)
+        _cart.splice(index, 1)
+        setCount(prev => prev - 1)
         setCart(_cart)
+        console.log(_cart, index)
     }
 
     const clearCart = () => {
