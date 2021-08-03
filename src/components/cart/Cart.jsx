@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const Cart = () => {
     const classes = useStyles()
-    const { cart, totalSale, delCart } = useCartContext()
+    const { cart, cartCount, totalSale, delCart } = useCartContext()
 
     return (
         <div className={classes.root}>
@@ -54,7 +54,7 @@ export const Cart = () => {
                             </Alert>
                         ):(
                             <Alert severity="info">
-                                Total de la Venta: $ {setPrice(totalSale)}
+                                Cantidad de items: {setPrice(cartCount)} - Total de la Venta: $ {setPrice(totalSale)}
                             </Alert>
                         )}
                     </Grid>
