@@ -1,9 +1,10 @@
-import React from 'react'
+import { React } from 'react'
 import { NavLink } from 'react-router-dom'
 import { makeStyles, Container, Grid, IconButton, CardContent, Card, Typography, CardMedia, CardActions, Button } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { useCartContext } from '../../context/CartContext'
 import Alert from '../alert/Alert'
+import { setPrice } from '../../config/Library'
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -29,22 +30,20 @@ const useStyles = makeStyles((theme) => ({
     links: {
         textDecoration: 'none',
         color: 'unset',
-    }
+    },
 }))
 
 
 export const Cart = () => {
     const classes = useStyles()
-    const { cart, delCart } = useCartContext()
-
-    console.log(cart);
+    const { cart, totalSale, delCart } = useCartContext()
 
     return (
         <div className={classes.root}>
             <Container className={classes.content}>
                 <Grid container spacing={3}>
-                    {!cart.length ? ( 
-                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        {!cart.length ? ( 
                             <Alert severity="warning">
                                 No hay producto en el carrito para completar la compra!
                                 <NavLink to="/product" key="/product" className={classes.links} >
@@ -53,10 +52,12 @@ export const Cart = () => {
                                     </Button>
                                 </NavLink>
                             </Alert>
-                        </Grid>
-                    ):(
-                        null
-                    )}
+                        ):(
+                            <Alert severity="info">
+                                Total de la Venta: $ {setPrice(totalSale)}
+                            </Alert>
+                        )}
+                    </Grid>
                     {cart.map((element, index) => {
                         return <Grid item xs={12} sm={12} md={12} lg={12} key={element.id}>
                             <Card className={classes.cart}>
@@ -74,7 +75,7 @@ export const Cart = () => {
                                             Cantiad : x {element.qty}
                                         </Typography>
                                         <Typography variant="subtitle1" color="textSecondary">
-                                            Precio : $ {element.price}
+                                            Precio : $ {setPrice(element.price)}
                                         </Typography>
                                         <br></br>
                                         <Typography variant="body2" color="textSecondary">
