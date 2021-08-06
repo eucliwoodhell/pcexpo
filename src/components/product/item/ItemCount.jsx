@@ -37,16 +37,18 @@ export const ItemCount = ({ onAdd, name }) => {
     const classes = useStyles()
     const [qty, setQty] = useState(0)
     const [open, setOpen] = useState(false)
+    const [show, setShow] = useState(false)
+
     
     const handleClick = () => {
         setOpen(qty > 0 ? true : false)
+        setShow(qty > 0 ? true : false)
     }
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway'){
             return;
         }
-
         setOpen(false)
     }
 
@@ -70,21 +72,31 @@ export const ItemCount = ({ onAdd, name }) => {
                 </IconButton>
             </Paper>
             <Box paddingTop={2}>
-                <Grid container  spacing={3}>
-                    <Grid item xs={6}>
-                        <Button disableElevation fullWidth variant="contained" color="primary" onClick={() => {onAdd(qty); handleClick()} } >Agregar Carrito</Button>
-                        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                            <Alert onClose={handleClose} severity="success">
-                                Se ha agrego correctamente el producto {name} al carrito
-                            </Alert>
-                        </Snackbar>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <NavLink  color="primary" to="/cart" key="/cart" className={classes.links} >
-                            <Button disableElevation fullWidth variant="contained" color="primary">Ir Carritos</Button>
-                        </NavLink>
-                    </Grid>
-                </Grid>
+                    {show ? (
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <NavLink color="primary" to="/cart" key="/cart" className={classes.links} >
+                                    <Button disableElevation fullWidth variant="contained" color="primary">Terminar tu compra</Button>
+                                </NavLink>
+                            </Grid>
+                        </Grid>
+                    ) : (
+                        <Grid container spacing={3}>
+                            <Grid item xs={6}>
+                                <Button disableElevation fullWidth variant="contained" color="primary" onClick={() => {onAdd(qty); handleClick()} } >Agregar Carrito</Button>
+                                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                                    <Alert onClose={handleClose} severity="success">
+                                        Se ha agrego correctamente el producto {name} al carrito
+                                    </Alert>
+                                </Snackbar>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <NavLink  color="primary" to="/cart" key="/cart" className={classes.links} >
+                                    <Button disableElevation fullWidth variant="contained" color="primary">Ir Carritos</Button>
+                                </NavLink>
+                            </Grid>
+                        </Grid>
+                    )}
             </Box>
         </div>
     )

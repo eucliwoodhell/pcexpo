@@ -10,15 +10,13 @@ import {
   Typography,
   Hidden,
   MenuItem, 
-  Menu, 
-  Badge
+  Menu
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import Logo from '../logo/Logo'
+import { CartWidget } from '../cart/CartWidget'
 import { sections } from '../../config/Autoload'
-import { useCartContext } from '../../context/CartContext'
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
@@ -79,7 +77,6 @@ const useStyles = makeStyles((theme) => ({
 const Bar = (props) => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { cartCount } = useCartContext()
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -157,13 +154,7 @@ const Bar = (props) => {
                 <AccountCircleIcon/>
               </MenuItem>
 
-              <NavLink to="/cart" key="/cart" className={classes.links} >
-                <MenuItem className={classes.toolbarLink}>
-                  <Badge badgeContent={cartCount} color="secondary">
-                    <ShoppingCartIcon style={{ fontSize: 33 }} />
-                  </Badge>
-                </MenuItem>
-              </NavLink>
+              <CartWidget />
 
             </Hidden>
 
