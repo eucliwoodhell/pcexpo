@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react'
 import { makeStyles, Container, Grid, Typography, Paper } from '@material-ui/core'
 import { useParams } from 'react-router-dom'
 import ItemCart from '../item/ItemCart';
+import { setPrice } from '../../../config/Library'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -85,7 +86,7 @@ export const ItemDetailContainer = () => {
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="subtitle1">
-                                            $ {item.price}
+                                            $ {setPrice(item.price)}
                                         </Typography>
                                     </Grid>
                                 </Grid>

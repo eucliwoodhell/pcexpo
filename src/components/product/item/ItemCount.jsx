@@ -5,6 +5,10 @@ import RemoveIcon from '@material-ui/icons/Remove'
 import AddIcon from '@material-ui/icons/Add'
 import Alert from '../../alert/Alert'
 
+// useMenu() : sirve para memorizar variables internas de componentes
+// useCallback : sirve para memorizar variables internde un componente si son funciones
+// memo() : memorizar un componente entero [no te renderice hasta que el prop haya cambiado]
+// los estados no se memorizan
 
 const useStyles = makeStyles((theme) => ({
     iconButton: {
