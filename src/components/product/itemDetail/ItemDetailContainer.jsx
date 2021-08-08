@@ -3,6 +3,7 @@ import { makeStyles, Container, Grid, Typography, Paper } from '@material-ui/cor
 import { useParams } from 'react-router-dom'
 import ItemCart from '../item/ItemCart';
 import { setPrice } from '../../../config/Library'
+import { useCartContext } from '../../../context/CartContext'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,24 +31,35 @@ const getProduct = (products, id) => {
     return products.find(item => item.id === id)
 }
 
+
 export const ItemDetailContainer = () => {
+    const classes = useStyles()
     const { id } = useParams()
     const [item, setItems] = useState()
+    const [detail, setDetail] = useState()
+    const { getDataDetail, product } = useCartContext()
 
     useEffect(() => {
-        fetch("https://mocki.io/v1/b294a546-1cff-4aef-aa56-42d718106461")
-            .then((response) => response.json())
-            .then((res) => {
-                // setItems(res.Products.filter(product => product.id === parseInt(id)))
-                setItems(getProduct(res.Products, parseInt(id)))
+        // fetch("https://mocki.io/v1/b294a546-1cff-4aef-aa56-42d718106461")
+        //     .then((response) => response.json())
+        //     .then((res) => {
+        //         // setItems(res.Products.filter(product => product.id === parseInt(id)))
+        //         setItems(getProduct(res.Products, parseInt(4)))
+        //     })
+        //     .catch((err) => console.log(`Response with errors: ${err}`))
+        const fetchData = async () => {
+            setItems(getProduct(product, id))
+            await getDataDetail(id).then((res) => {
+                setDetail(res.data())
             })
-            .catch((err) => console.log(`Response with errors: ${err}`))
-    }, [id]);
+        }
+        fetchData();
+    }, [getDataDetail, product, id]);
 
-    const classes = useStyles()
     console.log(item);
+    console.log(detail);
     console.log(id);
-
+    
     return (
         <div className={classes.root}>
             <Container className={classes.content} maxWidth="md">
@@ -76,11 +88,12 @@ export const ItemDetailContainer = () => {
                                             <Typography variant="body2" color="textSecondary">
                                                 Categoria: {item.category}
                                                 <br />
-                                                Marca: {item.detail[0].Brand}
+                                                Marca: {detail ? (detail.Brand) : (null)}
                                                 <br />
-                                                Color: {item.detail[0].Color}
+                                                Color: {detail ? (detail.Color) : (null)}
                                                 <br />
-                                                Tamaño: {item.detail[0].Size}
+                                                Tamaño: {detail ? (detail.Size) : (null)}
+                                                <br />
                                             </Typography>
                                         </Grid>
                                     </Grid>

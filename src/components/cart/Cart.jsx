@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { makeStyles, Container, Grid, IconButton, CardContent, Card, Typography, CardMedia, CardActions, Button } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { useCartContext } from '../../context/CartContext'
-import Alert from '../alert/Alert'
 import { setPrice } from '../../config/Library'
+import Alert from '../alert/Alert'
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     links: {
         textDecoration: 'none',
         color: 'unset',
+        width: "100%"
     },
 }))
 
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 export const Cart = () => {
     const classes = useStyles()
     const { cart, cartCount, totalSale, delCart } = useCartContext()
-
+    console.log(cart);
     return (
         <div className={classes.root}>
             <Container className={classes.content}>
@@ -80,12 +81,6 @@ export const Cart = () => {
                                         <br></br>
                                         <Typography variant="body2" color="textSecondary">
                                             Categoria: {element.category}
-                                            <br />
-                                            Marca: {element.detail[0].Brand}
-                                            <br />
-                                            Color: {element.detail[0].Color}
-                                            <br />
-                                            Tamaño: {element.detail[0].Size}
                                         </Typography>
                                     </CardContent>
                                     <CardActions className={classes.actions}>
@@ -97,6 +92,13 @@ export const Cart = () => {
                             </Card>
                         </Grid>
                     })}
+                    {cart.length > 0 ? (
+                        <NavLink to="/form" key="/form" className={classes.links} >
+                            <Button disableElevation fullWidth variant="contained" color="primary">Terminar compra</Button>
+                        </NavLink>
+                    ) : (
+                        null
+                    )}
                 </Grid>
             </Container>
         </div>

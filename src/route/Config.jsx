@@ -2,6 +2,7 @@ import { lazy } from 'react'
 import ItemListContainer from '../components/product/itemList/ItemListContainer'
 import ItemDetailContainer from '../components/product/itemDetail/ItemDetailContainer'
 import Cart from '../components/cart/Cart'
+import Form from '../components/form/Form'
 
 // NOTE
 // Cargar de forma renderizada los componente en forma de promesas
@@ -58,6 +59,11 @@ const invited = {
             path: '/cart',
             exact: true,
             component: Cart,
+        },
+        {
+            path: '/form',
+            exact: true,
+            component: Form,
         },
     ] 
 }

@@ -1,8 +1,8 @@
 import { Grid, makeStyles, Container, Paper } from '@material-ui/core'
-import { React, useState, useEffect, useRef } from 'react'
+// import { React, useState, useEffect, useRef } from 'react'
+import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getFirebaseAppStore } from '../../../services/firebase'
-
+import { useCartContext } from '../../../context/CartContext'
 import Item from '../item/Item'
 
 const useStyles = makeStyles((theme) => ({
@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '130px',
     },
 }));
-
 
 const getProducts = (products, category) => {
     if (category) {
@@ -28,41 +27,35 @@ const getProducts = (products, category) => {
     return products
 }
 
-
 export const ItemListContainer = () => {
     const { id } = useParams()
     const [items, setItems] = useState()
-    const isMountedRef = useRef(null);
+    const { product } = useCartContext()
+    // const isMountedRef = useRef(null);
+
+    // useEffect(() => {
+    //     fetch("https://mocki.io/v1/b294a546-1cff-4aef-aa56-42d718106461")
+    //         .then((response) => response.json())
+    //         .then((res) => {
+    //             console.log(isMountedRef.current);
+    //             if (isMountedRef.current) {
+    //                 console.log(res.Products);
+    //                 setItems(getProducts(res.Products, categoryId))
+    //             }
+    //         })
+    //         .catch((err) => console.log(`Response with errors: ${err}`))
+    //     return () => isMountedRef.current = false
+    // }, [id]);
+
+    // useEffect(() => {
+    //     isMountedRef.current = true
+    // })
 
     useEffect(() => {
-        fetch("https://mocki.io/v1/b294a546-1cff-4aef-aa56-42d718106461")
-            .then((response) => response.json())
-            .then((res) => {
-                console.log(isMountedRef.current);
-                if (isMountedRef.current) {
-                    setItems(getProducts(res.Products, id))
-                }
-            })
-            .catch((err) => console.log(`Response with errors: ${err}`))
-        return () => isMountedRef.current = false
-    }, [id]);
+        setItems(getProducts(product, id))
+    }, [product, id])
 
-    useEffect(() => {
-        isMountedRef.current = true
-    })
-
-    useEffect(() =>{
-        const firebase = getFirebaseAppStore()
-        const collection = firebase.collection('producto')
-        // .where("id", "==", 100)
-        .get()
-        .then((res) =>{
-            console.log(res.docs)
-            res.forEach(docs => {
-                console.log(docs.data())
-            })
-        })
-    })
+    console.log(items);
 
     const classes = useStyles()
     return (

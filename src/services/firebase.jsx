@@ -3,7 +3,6 @@ import "@firebase/firestore";
 import "@firebase/auth"
 import "@firebase/storage"
 
-
 const firebaseConfig = firebase.initializeApp({
     apiKey: "AIzaSyDXWecTanppWr1SVEiX1wxDlNPtRNoBN4s",
     authDomain: "apps-dev-7e4bf.firebaseapp.com",
