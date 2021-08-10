@@ -2,13 +2,14 @@ import { lazy } from 'react'
 import ItemListContainer from '../components/product/itemList/ItemListContainer'
 import ItemDetailContainer from '../components/product/itemDetail/ItemDetailContainer'
 import Cart from '../components/cart/Cart'
-import Form from '../components/form/Form'
+// import Form from '../components/form/Form'
 
 // NOTE
 // Cargar de forma renderizada los componente en forma de promesas
 // (Se utiliza para generar un render dentro de un componente)
 const Home = lazy(() => import( '../layout/home/Home' ) )
 const About = lazy(() => import( '../layout/about/About' ) )
+const Order = lazy(() => import('../layout/order/Order'))
 
 
 // NOTE
@@ -63,7 +64,7 @@ const invited = {
         {
             path: '/form',
             exact: true,
-            component: Form,
+            component: Order,
         },
     ] 
 }

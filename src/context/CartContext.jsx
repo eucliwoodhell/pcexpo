@@ -36,6 +36,13 @@ const CartProvider = ({ children }) => {
         return detail
     }
 
+    const getDataProductBy = async (id) => {
+        const db = getFirebaseAppStore()
+        const itemsCollection = db.collection('product')
+        const product = await itemsCollection.doc(id).get()
+        return product
+    }
+
     const addCart = ({product}, qty ) => {
         let count = cart.length
         addTotalSale(product.price * qty)
@@ -86,7 +93,7 @@ const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ cartCount, cart, totalSale, addCart, delCart, clearCart, product, getDataDetail, createOrder }}>
+        <CartContext.Provider value={{ cartCount, cart, totalSale, addCart, delCart, clearCart, product, getDataDetail, createOrder, getDataProductBy }}>
             {children}
         </CartContext.Provider>
     )
