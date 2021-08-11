@@ -80,6 +80,7 @@ const CartProvider = ({ children }) => {
 
     const clearCart = () => {
         setCart([])
+        setCount(0)
     }
     
     const createOrder = (name, email, phone) =>{
@@ -89,6 +90,7 @@ const CartProvider = ({ children }) => {
         const order = { buyer: { name, phone, email }, item: cart, total: totalSale };
         db.collection("orders").add(order).then(({ id }) => {
             console.log(id);
+            clearCart()
         });
     }
 

@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import { makeStyles, Container, TextField, Paper, Grid, Button } from '@material-ui/core'
+import React from 'react'
+import { makeStyles, Container, Paper, Grid } from '@material-ui/core'
 import { useCartContext } from '../../context/CartContext'
-import { Form } from '../../components/form/Form'
+import { useForm, Form } from '../../components/form/Form'
+import Control from '../../components/controls/Control'
+import Alert from '../../components/alert/Alert'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,20 +22,54 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
+const initialFValues = {
+    fullName: '',
+    email: '',
+    mobile: '',
+}
+
 export const Order = () => {
     const classes = useStyles();
 
-    const [name, setName] = useState()
-    const [email, setEmail] = useState()
-    const [phone, setPhone] = useState()
-
     const { createOrder } = useCartContext()
+
+
+    const validate = (fieldValues = values) => {
+        let temp = { ...errors }
+        if ('fullName' in fieldValues)
+            temp.fullName = fieldValues.fullName ? "" : "El nombre es requerido."
+        if ('email' in fieldValues)
+            temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Email no es valido."
+        if ('email' in fieldValues)
+            temp.email = fieldValues.email ? "" : "El email es requerido."
+        if ('mobile' in fieldValues)
+            temp.mobile = fieldValues.mobile.length > 9 ? "" : "Minimo 10 numeros requeridos."
+        setErrors({
+            ...temp
+        })
+        console.log(temp);
+        if (fieldValues === values)
+            return Object.values(temp).every(x => x === "")
+    }
+    
+    const {
+        values,
+        // setValues,
+        errors,
+        setErrors,
+        handleInputChange,
+        resetForm
+    } = useForm(initialFValues, true, validate);
 
     const handleSubmit = e => {
         e.preventDefault()
-        createOrder(name, email, phone)
+        console.log(validate());
+        if (validate()) {
+            createOrder(values.fullName, values.email, values.mobile)
+            resetForm()
+        }
     }
-
+    
     return (
         <Form onSubmit={handleSubmit}>
             <div className={classes.root}>
@@ -41,47 +77,58 @@ export const Order = () => {
                     <Paper>
                         <Grid container justify="center" spacing={3}>
                             <Grid align="center" item xs={12} sm={12} md={12} lg={12}>
-                                <TextField
+                                <Control.Input
+                                    name="fullName"
                                     label="Nombre"
+                                    value={values.fullName}
+                                    error={errors.fullName}
                                     fullWidth
                                     margin="normal"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    onInput={(e) => { setName(e.target.value) }}
+                                    onChange={handleInputChange}
                                 />
+                                
                             </Grid>
 
                             <Grid align="center" item xs={12} sm={12} md={12} lg={12}>
 
-                                <TextField
+                                <Control.Input
+                                    name="email"
                                     label="Email"
+                                    value={values.email}
+                                    error={errors.email}
                                     fullWidth
                                     margin="normal"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    onInput={(e) => { setEmail(e.target.value) }}
+                                    onChange={handleInputChange}
                                 />
                             </Grid>
 
                             <Grid align="center" item xs={12} sm={12} md={12} lg={12}>
 
-                                <TextField
+                                <Control.Input
+                                    name="mobile"
                                     label="Numero de teléfono"
+                                    value={values.mobile}
+                                    error={errors.mobile}
                                     fullWidth
                                     margin="none"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    onInput={(e) => { setPhone(e.target.value) }}
+                                    onChange={handleInputChange}
                                 />
 
                             </Grid>
 
                             <Grid align="center" item xs={12} sm={12} md={12} lg={12}>
-                                <Button disableElevation variant="contained" color="primary" type="submit">Enviar</Button>
+                                <Control.Button disableElevation variant="contained" color="primary" type="submit" text="Enviar"/>
                             </Grid>
+
                         </Grid>
                     </Paper>
                 </Container>
