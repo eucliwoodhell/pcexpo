@@ -11,10 +11,6 @@ const CartProvider = ({ children }) => {
     const [totalSale, setTotalSale] = useState(0)
     const [cart, setCart] = useState([])
 
-    useEffect(() => {
-        getData();
-    }, [])
-
     const getData = () => {
         const db = getFirebaseAppStore()
         const itemsCollection = db.collection('product')
@@ -93,6 +89,12 @@ const CartProvider = ({ children }) => {
             clearCart()
         });
     }
+
+    useEffect(() => {
+        // localStorage.setItem('cart', JSON.stringify(cart))
+        // console.log(localStorage.getItem('cart'));
+        getData();
+    }, [])
 
     return (
         <CartContext.Provider value={{ cartCount, cart, totalSale, addCart, delCart, clearCart, product, getDataDetail, createOrder, getDataProductBy }}>

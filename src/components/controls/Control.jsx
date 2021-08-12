@@ -8,6 +8,10 @@ import Select from './Select'
 const Control ={
     Input,
     Button,
+    Checkbox,
+    DatePicker,
+    RadioGroup,
+    Select
 }
 
 export default Control
